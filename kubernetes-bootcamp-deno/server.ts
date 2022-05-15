@@ -4,7 +4,7 @@ const startTime = new Date().getTime();
 const host = Deno.env.get("HOSTNAME") ?? Deno.env.get("HOST");
 let requests = 0;
 
-function handler(req: Request): Response {
+function handler(_: Request): Response {
 
     console.log("Running On:" ,host, "| Total Requests:", ++requests,"| App Uptime:", (new Date().getTime() - startTime)/1000 , "seconds", "| Log Time:",new Date());
 
