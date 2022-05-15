@@ -1,0 +1,68 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: go-app
+  labels:
+    app: go
+spec:
+  containers:
+  - name: go-app
+    image: kubernetes-bootcamp-go:v0.7
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-service
+spec:
+  selector:
+    app: go
+  ports:
+  # Default port used by the image
+  - port: 8090
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: deno-app
+  labels:
+    app: deno
+spec:
+  containers:
+  - name: deno-app
+    image: kubernetes-bootcamp-deno:v0.4
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: deno-service
+spec:
+  selector:
+    app: deno
+  ports:
+  # Default port used by the image
+  - port: 8000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  # ingressClassName: kong
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "/go"
+        backend:
+          service:
+            name: go-service
+            port:
+              number: 8090
+      - pathType: Prefix
+        path: "/deno"
+        backend:
+          service:
+            name: deno-service
+            port:
+              number: 8000
+---
