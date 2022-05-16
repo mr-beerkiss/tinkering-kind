@@ -29,6 +29,9 @@ the container won't be loaded
 - [ ] [Install Istio](https://istio.io/latest/docs/setup/platform-setup/kind/)
 - [ ] Configure kubectl autocompletion
 - [ ] Use a smaller image for the deno app
+- [ ] Switch Pod manifests to [deployments](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
+- [ ] Add some basic auth to the Go app and set some stuff via configMaps & secrets
+- [ ] Install [Redis](https://kubernetes.io/docs/tutorials/configuration/configure-redis-using-configmap/) into the cluster to use as a KV store
 
 ## Reading List
 
@@ -37,6 +40,9 @@ the container won't be loaded
 - [ ] [Go Maps in Action](https://go.dev/blog/maps)
 - [ ] [Kuberbetes Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/#general-configuration-tips)
 - [ ] [Connecting Applications with Services](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
+- [ ] [Kubernetes: kubectl wait](https://enix.io/en/blog/kubernetes-tips-tricks-kubectl-wait/)
+- [ ] [Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
+- [ ] [Config Maps](https://kubernetes.io/docs/concepts/configuration/configmap/)
 
 ## Watch List
 - [ ] [Networking in Kubernetes (7min)](https://kube.academy/courses/kubernetes-in-depth/lessons/an-introduction-to-cni)
@@ -49,6 +55,22 @@ the container won't be loaded
 A blog article about setting up a Raspberry PI cluster. Could be a fun
 experiment but need a justifable application stack to run on it other
 than "Hello World"
+
+### [mkcert]
+
+A tool for creating locally trusted development certificates.
+
+Note the install recommends installing `nss` (if you use Firefox) but
+I'm not sure what it is... this might be why
+
+> `Warning: "certutil" is not available, so the CA can't be automatically installed in Firefox! ⚠️
+Install "certutil" with "brew install nss" and re-run "mkcert -install" 👈`
+
+A `TODO` here is figuring out of it is possible to use these certs with
+kind! And like magic here is an [example](https://github.com/dgafka/local-kuberentes-cluster-over-https)
+Note the example requires `ctlptl` which is _another_ orchestration 
+tool that creates an abstraction over common `localhost` kubernetes 
+installs. 
 
 ### [Enhanced Echo Server](https://github.com/mauilion/echo-server)
 
@@ -82,7 +104,14 @@ different arch to the host without any config (although it does spit out
 a warning!). It's been a journey realising how "assumed amd64" 
 everything is until you switch to ARM!
 
-[Entry Level Kubernetes Certification](https://www.cncf.io/announcements/2021/10/13/entry-level-kubernetes-certification-to-help-advance-cloud-careers/)
+### [Open Application Model](https://oam.dev)
+
+Came up while talking to Brendan today. Seems to be an attempt to build
+applications in a way that is agnostic to current underlying models
+(e.g containers, kubernetes) to keep things portable across emerging
+technologies. Sounds a bit wishy washy but worth a look.
+
+### [Entry Level Kubernetes Certification](https://www.cncf.io/announcements/2021/10/13/entry-level-kubernetes-certification-to-help-advance-cloud-careers/)
 
 "Official" certification for Kubernetes. Something worth considering 
 but no essential. Might help with a career transition.
