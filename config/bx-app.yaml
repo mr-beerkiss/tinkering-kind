@@ -1,13 +1,52 @@
-kind: Pod
-apiVersion: v1
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: go-app
+#   labels:
+#     app: go
+# spec:
+#   containers:
+#   - name: go-app
+#     image: kubernetes-bootcamp-go:v0.7
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: go-app
+  name: go-deployment
   labels:
     app: go
 spec:
-  containers:
-  - name: go-app
-    image: kubernetes-bootcamp-go:v0.7
+  replicas: 2
+  selector:
+    matchLabels:
+      app: go
+  template:
+    metadata:
+      labels:
+        app: go
+    spec:
+      containers:
+      - name: go-app
+        image: kubernetes-bootcamp-go:v0.8
+        resources:
+          requests: 
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8090
+        env:
+        - name: VERSION
+          value: v0.8
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8090
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 1
 ---
 kind: Service
 apiVersion: v1

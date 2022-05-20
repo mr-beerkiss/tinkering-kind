@@ -32,6 +32,9 @@ the container won't be loaded
 - [ ] Switch Pod manifests to [deployments](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 - [ ] Add some basic auth to the Go app and set some stuff via configMaps & secrets
 - [ ] Install [Redis](https://kubernetes.io/docs/tutorials/configuration/configure-redis-using-configmap/) into the cluster to use as a KV store
+- [ ] Run local cluster under https (See mkcert below)
+- [ ] Enable metrics-server in kind and use it to calculate CPU + RAM 
+limits
 
 ## Reading List
 
@@ -45,8 +48,8 @@ the container won't be loaded
 - [ ] [Config Maps](https://kubernetes.io/docs/concepts/configuration/configmap/)
 
 ## Watch List
-- [ ] [Networking in Kubernetes (7min)](https://kube.academy/courses/kubernetes-in-depth/lessons/an-introduction-to-cni)
-- [ ] [NAT and Firewall Explained (10min)](https://www.youtube.com/watch?v=2llWuivdS7w)
+- [x] [Networking in Kubernetes (7min)](https://kube.academy/courses/kubernetes-in-depth/lessons/an-introduction-to-cni)
+- [x] [NAT and Firewall Explained (10min)](https://www.youtube.com/watch?v=2llWuivdS7w)
 
 ## Other Interesting Things Discovered As Part of this
 
