@@ -19,6 +19,12 @@ most straightforward config. Would be good to better understand the
 trade-offs between the ones on the kind website. See 
 [Setting Up an Ingress Controller][kind-ingress] for details
 
+Something interesting, instead of `kubectl proxy` or settin up `ingress`. 
+You can also use [`kubectl port-forward`](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to expose pods to the host for 
+testing. Could be useful for something connecting to a DB while you develop
+the code on the host. i.e. the DB runs in the cluster so you don't have 
+to install it on the host.
+
 ## Apps
 
 Remember to build the deno docker file with `--platform arm64` otherwise
@@ -35,6 +41,8 @@ the container won't be loaded
 - [ ] Run local cluster under https (See mkcert below)
 - [ ] Enable metrics-server in kind and use it to calculate CPU + RAM 
 limits
+- [ ] [Install Tekton](https://tekton.dev/docs/getting-started/) for automated builds (CI/CD)
+- [ ] Try [k9s](https://github.com/derailed/k9s)
 
 ## Reading List
 
@@ -46,6 +54,9 @@ limits
 - [ ] [Kubernetes: kubectl wait](https://enix.io/en/blog/kubernetes-tips-tricks-kubectl-wait/)
 - [ ] [Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 - [ ] [Config Maps](https://kubernetes.io/docs/concepts/configuration/configmap/)
+- [ ] [Redis as a Primary Database](https://redis.com/blog/redis-cache-vs-redis-primary-database-in-90-seconds/)
+- [ ] [How SSDs Really Work](https://arstechnica.com/information-technology/2012/06/inside-the-ssd-revolution-how-solid-state-disks-really-work/) - more info on using Redis as primary DB
+- [ ] [Minio](https://min.io) a OSS S3 type thing (i.e. kubernetes object storage)
 
 ## Watch List
 - [x] [Networking in Kubernetes (7min)](https://kube.academy/courses/kubernetes-in-depth/lessons/an-introduction-to-cni)
@@ -106,6 +117,23 @@ transparently. It's how Docker can do run containers build with a
 different arch to the host without any config (although it does spit out
 a warning!). It's been a journey realising how "assumed amd64" 
 everything is until you switch to ARM!
+
+## Kubernetes plugin managers
+
+[Helm]() is the obvious one. But there is also [Krew](https://krew.sigs.k8s.io). I don't know when these
+people find time to go outside or eat with the speed with which these ecosystem seems to move!
+At least someone else has done some analyis on [Helm vs kubectl](https://medium.com/@RedBaronDr1/helm-vs-kubectl-5aaf2dba7d71)... oh wait that's not _`krew` vs `helm`_
+### [metrics-server](https://github.com/kubernetes-sigs/metrics-server)
+
+Would be good to figure out how to enable the `metrics-server` on kind. 
+There are tools like [kube-ops-view](https://codeberg.org/hjacobs/kube-ops-view) and 
+[ktop]() that can help visualise resource use in the cluster. An [example
+config](https://gist.github.com/hjacobs/69b6844ba8442fcbc2007da316499eb4)
+from the author of kube-ops-view. Seems complicated.
+
+### Redis
+
+- [Deploying Redis Cluster on Kubernetes](https://www.containiq.com/post/deploy-redis-cluster-on-kubernetes)
 
 ### [Open Application Model](https://oam.dev)
 
