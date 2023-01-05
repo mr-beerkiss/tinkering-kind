@@ -43,6 +43,8 @@ the container won't be loaded
 limits
 - [ ] [Install Tekton](https://tekton.dev/docs/getting-started/) for automated builds (CI/CD)
 - [ ] Try [k9s](https://github.com/derailed/k9s)
+- [ ] [staticcheck](https://staticcheck.io/docs/getting-started/) for static analysis & linter for golang
+- [ ] Setup Cluster with Terraform - [Example](https://nickjanetakis.com/blog/configuring-a-kind-cluster-with-nginx-ingress-using-terraform-and-helm)
 
 ## Reading List
 
@@ -57,6 +59,9 @@ limits
 - [ ] [Redis as a Primary Database](https://redis.com/blog/redis-cache-vs-redis-primary-database-in-90-seconds/)
 - [ ] [How SSDs Really Work](https://arstechnica.com/information-technology/2012/06/inside-the-ssd-revolution-how-solid-state-disks-really-work/) - more info on using Redis as primary DB
 - [ ] [Minio](https://min.io) a OSS S3 type thing (i.e. kubernetes object storage)
+- [ ] [Uptrace](https://get.uptrace.dev/guide/opentelemetry-tracing-tool.html#clickhouse) Distributed Tracing Tool
+- [ ] [Go Concurrency Patterns: Context](https://go.dev/blog/context)
+- [ ] [lo](https://github.com/samber/lo) Lodash like lib for Go.
 
 ## Watch List
 - [x] [Networking in Kubernetes (7min)](https://kube.academy/courses/kubernetes-in-depth/lessons/an-introduction-to-cni)
@@ -135,12 +140,20 @@ from the author of kube-ops-view. Seems complicated.
 
 - [Deploying Redis Cluster on Kubernetes](https://www.containiq.com/post/deploy-redis-cluster-on-kubernetes)
 
+When you have Redis in the Cluster. You can use the [Go Redis](https://redis.uptrace.dev) client.
+
 ### [Open Application Model](https://oam.dev)
 
 Came up while talking to Brendan today. Seems to be an attempt to build
 applications in a way that is agnostic to current underlying models
 (e.g containers, kubernetes) to keep things portable across emerging
 technologies. Sounds a bit wishy washy but worth a look.
+
+
+### [makefiles.dev](https://github.com/make-files/makefiles)
+
+Another interesting find, opinionated makefiles you download off the internet (😱). Not really 
+sure how I feel about that but I guess it's good enough to get my going. 
 
 ### [Entry Level Kubernetes Certification](https://www.cncf.io/announcements/2021/10/13/entry-level-kubernetes-certification-to-help-advance-cloud-careers/)
 
